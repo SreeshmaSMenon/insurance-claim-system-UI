@@ -1,0 +1,93 @@
+<div class="container mt-5" style="text-align:center">
+  <div>
+    <h3 style="color: orange">Approve screen</h3>
+  </div>
+  <p-table #dt [value]="response" [rows]="9" [paginator]="true" [scrollable]="true" [autoLayout]="true"
+    [responsive]="true" dataKey="claimId" rowExpandMode="single">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width:25%"></th>
+        <th style="width:25%">Claim Id</th>
+        <th style="width:25%">Claim Date</th>
+        <th style="width:25%">Insurance Number</th>
+        <th style="width:25%">Action</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-expanded="expanded" let-approve>
+      <tr>
+        <td style="width:25%">
+          <a [pRowToggler]="approve">
+            <i [ngClass]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right' " aria-hidden="true"></i>
+          </a>
+        </td>
+        <td style="width:25%">{{approve.claimId}}</td>
+        <td style="width:25%">{{approve.claimDate }}</td>
+        <td style="width:25%">{{approve.insuranceNumber}}</td>
+        <td style="width:25%">
+          <button class="btn btn-success btn-sm mr-1" icon="pi pi-check" (click)="approve()">Approve</button>
+          <button class="btn btn-danger btn-sm" icon="pi pi-times" (click)="cancel()">Reject</button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-rowData let-oe let-columns="columns">
+      <tr>
+        <td [attr.colspan]="10">
+          <div class="ui-g ui-fluid" style="font-size:12px;">
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Hospital Name : </b><span class="pcolor">{{oe.hospitalName}}
+                </span></label>
+            </div>
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Admission Date: </b><span
+                  class="pcolor">{{oe.admissionDate}}
+                </span></label>
+            </div>
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Discharge Date : </b><span
+                  class="pcolor">{{oe.dischargeDate}}
+                </span></label>
+            </div>
+
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Total Claim Amount : </b><span
+                  class="pcolor">{{oe.totalClaimAmount}}
+                </span></label>
+            </div>
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Discharge Summary: </b><span
+                  class="pcolor">{{oe.dischargeSummary}}
+                </span></label>
+            </div>
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Diagnosis : </b><span class="pcolor">{{oe.diagnosis}}
+                </span></label>
+            </div>
+
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Ailment Nature : </b><span
+                  class="pcolor">{{oe.ailmentNature}}
+                </span></label>
+            </div>
+
+            <div class="ui-g-12 ui-md-4" style="text-align:left">
+              <label class="lcolor" for="exampleAccount"><b>Documents Path : </b><span
+                  class="pcolor">{{oe.documentsPath}}
+                </span></label>
+            </div>
+
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<p-dialog header="Are you sure want to reject?" [(visible)]="display" [modal]="true"
+  [style]="{width: '350px', minWidth: '200px'}" [minY]="70" [maximizable]="true" [baseZIndex]="10000">
+  <b>Comments </b> <input type="text" pInputText [(ngModel)]="comments" size="41" />
+  <p-footer>
+    <button type="button" pButton icon="pi pi-check" (click)="reject()" label="Reject"></button>
+    <button type="button" pButton icon="pi pi-times" (click)="display=false" label="Cancel"
+      class="ui-button-secondary"></button>
+  </p-footer>
+</p-dialog>

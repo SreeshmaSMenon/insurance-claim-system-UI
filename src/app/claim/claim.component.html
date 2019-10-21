@@ -1,0 +1,92 @@
+<div class="container mt-5">
+  <div>
+
+    <h5 style="color: orange">Claim Your Medical Expenses Here</h5><br />
+
+    <div class="row">
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="user.customerName  " pInputText>
+          <label for="float-input">Name</label>
+        </span>
+      </div>
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="user.insuranceNumber " pInputText>
+          <label for="float-input">Policy No</label>
+        </span>
+      </div>
+    </div><br />
+    <div class="row">
+      <div class="col-6">
+        <span id="float-input" class="ui-float-label">
+          <input type="text" size="30" [(ngModel)]="user.diagnosis" pInputText>
+          <label for="float-input">Daignosis</label>
+        </span>
+      </div>
+      <div class="col-6">
+        <span class="ui-float-label">
+          <p-calendar id="float-input" [minDate]="admissionDates" [(ngModel)]="user.admissionDate" size="30"
+            dateFormat="dd/mm/yy" [yearNavigator]="true" yearRange="1975:2050" [showIcon]="true"
+            (click)="dateValidation()">
+          </p-calendar>
+          <label for="float-input">Admission Date</label>
+        </span>
+      </div>
+    </div><br />
+    <div class="row">
+      <div class="col-6">
+        <span class="ui-float-label">
+          <p-calendar id="float-input" [minDate]="dischargeDates" [(ngModel)]="user.dischargeDate" size="30"
+            dateFormat="dd/mm/yy" [showIcon]="true">
+          </p-calendar>
+          <label for="float-input">Discharge Date</label>
+        </span>
+      </div>
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="number" size="30" [(ngModel)]="user.totalClaimAmount" pInputText>
+          <label for="float-input">Total Claim Amount</label>
+        </span>
+      </div>
+    </div><br />
+    <div class="row">
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="user.hospitalName" pInputText>
+          <label for="float-input">Hospital Name</label>
+        </span>
+      </div>
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="user.dischargeSummary" pInputText>
+          <label for="float-input">Discharge Summary</label>
+        </span>
+      </div>
+    </div><br />
+    <div class="row">
+      <div class="col-6">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" [(ngModel)]="user.ailmentNature " pInputText>
+          <label for="float-input">Nature of Ailment</label>
+        </span>
+      </div>
+      <div class="col-6">
+        <!-- <p-fileUpload mode="basic" name="demo[]" url="./upload.pdf" accept="pdf/*" maxFileSize="1000000"
+          (onUpload)="onBasicUpload($event)"></p-fileUpload> -->
+        <!-- <input type="file" name="file" /> -->
+
+      </div>
+    </div><br />
+
+  </div>
+</div>
+
+
+<p-messages [(value)]="msgs"></p-messages>
+<div class="container mt-5">
+  <button pButton type="button" label="Sumbit Application" (click)="submitApplication()" icon="pi pi-check"
+    [disabled]="display"></button>
+</div><br />
+
+<p-toast [style]="{marginTop: '80px'}" position="top-center"></p-toast>

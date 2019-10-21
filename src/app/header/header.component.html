@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-sm navbar-dark  " style="background-color:orange">
+  <div class="container-fluid">
+    <a routerLink="home"><img src="assets/Hcl_logo.png" alt="HCL Logo" width="100" /></a>&nbsp;&nbsp;
+    <a routerLink="home" class="navbar-brand">Claim Insure</a>
+    <!-- <div class="collapse navbar-collapse" *ngIf="display">
+      <ul class="navbar-nav ml-auto">
+        <li><a routerLink="" class="nav-link">About Us</a></li>
+        <li><a routerLink="login" class="nav-link">Log In</a></li>
+        <li><a routerLink="register" class="nav-link">Sign Up</a></li>
+      </ul>
+    </div> -->
+
+
+    <div icon="pi pi-times" class="collapse navbar-collapse" *ngIf="display">
+      <ul class="navbar-nav navbar-brand ml-auto">
+
+        <li><button pButton label="{{userName}}" icon="pi pi-user" class="ui-button-secondary"></button></li>
+        &nbsp;&nbsp;
+        <li><button pButton label="Logout" icon="pi pi-sign-out" (click)="logout()"></button></li>
+      </ul>
+      <p-confirmDialog [style]="{width: '30vw'}">
+      </p-confirmDialog>
+    </div>
+    <div icon="pi pi-times" class="collapse navbar-collapse" *ngIf="!display">
+      <ul class="navbar-nav navbar-brand ml-auto">
+        <!-- <li><a routerLink="/status">Check Status</a></li> -->
+        <li><button pButton label="Login" icon="pi pi-sign-in" (click)="login()"></button></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
